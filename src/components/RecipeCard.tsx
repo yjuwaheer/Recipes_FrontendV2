@@ -11,8 +11,8 @@ const RecipeCard = ({ recipe }: { recipe: IRecipe }) => {
 
       <Group position="apart" mt="md" mb="xs">
         <Text weight={500}>
-          {recipe.title.length > 30
-            ? `${recipe.title.substring(0, 30)}...`
+          {recipe.title.length > 25
+            ? `${recipe.title.substring(0, 25)}...`
             : recipe.title}
         </Text>
       </Group>

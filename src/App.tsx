@@ -1,5 +1,5 @@
 import "./App.css";
-import { Divider, Container } from "@mantine/core";
+import { Divider, Container, Box } from "@mantine/core";
 import {
   BrowserRouter as Router,
   Routes,
@@ -16,7 +16,9 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar />
+        <Box bg="green.0">
+          <Navbar />
+        </Box>
         <Divider mb={"md"} />
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />

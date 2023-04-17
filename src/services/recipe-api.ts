@@ -5,12 +5,27 @@ export const instance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
 });
 
-export const getRecipes = async (page: string, sort: string): Promise<IRecipe[]> => {
+export const getRecipes = async (
+  page: string,
+  sort: string
+): Promise<IRecipe[]> => {
   try {
-    const recipes: IRecipe[] = (await instance.get(`/recipes?page=${page}&sort=${sort}`)).data;
+    const recipes: IRecipe[] = (
+      await instance.get(`/recipes?page=${page}&sort=${sort}`)
+    ).data;
     return recipes;
   } catch (error) {
     console.log(error);
     return [];
+  }
+};
+
+export const getRecipe = async (id: string): Promise<IRecipe | null> => {
+  try {
+    const recipe: IRecipe = (await instance.get(`/recipes/${id}`)).data;
+    return recipe;
+  } catch (error) {
+    console.log(error);
+    return null;
   }
 };

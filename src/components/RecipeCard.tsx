@@ -1,12 +1,20 @@
-import React from "react";
-import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
+import { Card, Image, Text, Button, Group } from "@mantine/core";
+import { useNavigate } from "react-router-dom";
 import { IRecipe } from "../shared/recipe-types";
 
 const RecipeCard = ({ recipe }: { recipe: IRecipe }) => {
+  const navigate = useNavigate();
+
   return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder miw={{300: '100%' ,sm: 300}}>
+    <Card
+      shadow="sm"
+      padding="lg"
+      radius="md"
+      withBorder
+      miw={{ 300: "100%", sm: 300 }}
+    >
       <Card.Section>
-        <Image src={recipe.image} height={160} alt="Recipe image" />
+        <Image src={recipe.image} height={160} alt="Broken image" />
       </Card.Section>
 
       <Group position="apart" mt="md" mb="xs">
@@ -21,7 +29,13 @@ const RecipeCard = ({ recipe }: { recipe: IRecipe }) => {
         {recipe.ingredients[0].substring(0, 20)}...
       </Text>
 
-      <Button variant="light" fullWidth mt="md" radius="md">
+      <Button
+        variant="light"
+        fullWidth
+        mt="md"
+        radius="md"
+        onClick={() => navigate(`/recipes/${recipe.id}`)}
+      >
         View Recipe
       </Button>
     </Card>

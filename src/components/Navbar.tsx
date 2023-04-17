@@ -4,7 +4,7 @@ import { Container, Title, Flex, Button } from "@mantine/core";
 
 const Navbar = () => {
   return (
-    <Container py={5}>
+    <Container py={12}>
       <Flex justify="space-between" align="center">
         <Link to="/">
           <Title order={2}>EATWELL</Title>

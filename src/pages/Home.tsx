@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
 import { Container, Flex, Select, Grid, Button } from "@mantine/core";
+import { useScrollIntoView } from "@mantine/hooks";
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import {
   useSearchParams,
   useNavigate,
   createSearchParams,
 } from "react-router-dom";
 import { getRecipes } from "../services/recipe-api";
-import Search from "../components/Search";
 import { IRecipe } from "../shared/recipe-types";
+import Search from "../components/Search";
 import RecipeCard from "../components/RecipeCard";
 
 const Home = () => {
+  const { scrollIntoView, targetRef } = useScrollIntoView<HTMLDivElement>({
+    offset: 10,
+  });
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [recipes, setRecipes] = useState<IRecipe[]>();
@@ -45,13 +50,17 @@ const Home = () => {
         sort: sort === null ? "0" : sort.toString(),
       }).toString(),
     });
+
+    scrollIntoView({
+      alignment: "center",
+    });
   };
 
   return (
     <Container>
       <Search />
 
-      <Flex mb={30}>
+      <Flex mb={10} ref={targetRef}>
         <Select
           label="Sort number of ingredients from"
           placeholder="low to high"
@@ -64,15 +73,30 @@ const Home = () => {
         />
       </Flex>
 
-      <Grid columns={3} mb={30}>
-        {recipes?.map((recipe: IRecipe) => (
-          <Grid.Col span={1} key={recipe.id}>
-            <RecipeCard recipe={recipe} />
-          </Grid.Col>
-        ))}
-      </Grid>
+      <Flex mb={10} justify="end" gap={10}>
+        <Button
+          disabled={prevDisabled}
+          onClick={() => handlePagination("prev")}
+          color="green.4"
+        >
+          <AiOutlineArrowLeft />
+        </Button>
+        <Button
+          disabled={nextDisabled}
+          onClick={() => handlePagination("next")}
+          color="green.4"
+        >
+          <AiOutlineArrowRight />
+        </Button>
+      </Flex>
 
-      <Flex mb={30} justify="center" gap={50}>
+      <Flex mb={30} wrap="wrap" justify="center" gap={10}>
+        {recipes?.map((recipe: IRecipe) => (
+          <RecipeCard key={recipe.id} recipe={recipe} />
+        ))}
+      </Flex>
+
+      <Flex mb={30} justify="center" gap={25}>
         <Button
           w={150}
           disabled={prevDisabled}

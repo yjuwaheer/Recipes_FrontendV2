@@ -4,7 +4,7 @@ import { IRecipe } from "../shared/recipe-types";
 
 const RecipeCard = ({ recipe }: { recipe: IRecipe }) => {
   return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder w={300}>
+    <Card shadow="sm" padding="lg" radius="md" withBorder miw={{300: '100%' ,sm: 300}}>
       <Card.Section>
         <Image src={recipe.image} height={160} alt="Recipe image" />
       </Card.Section>

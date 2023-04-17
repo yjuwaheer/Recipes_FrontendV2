@@ -4,7 +4,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 
 const Search = () => {
   return (
-    <Flex justify="center">
+    <Flex justify="center" mb={10}>
       <Input
         placeholder="Search recipes, ingredients..."
         size="md"

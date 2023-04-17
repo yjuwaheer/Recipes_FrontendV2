@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Create from "./pages/Create";
 import Recipe from "./pages/Recipe";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/search" element={<Search />} />
           <Route path="/create" element={<Create />} />
           <Route path="/recipes/:id" element={<Recipe />} />
           <Route path="*" element={<Container>Error 404</Container>} />

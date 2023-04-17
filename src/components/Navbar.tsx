@@ -7,9 +7,7 @@ const Navbar = () => {
     <Container py={5}>
       <Flex justify="space-between" align="center">
         <Link to="/">
-          <Title >
-            EATWELL
-          </Title>
+          <Title order={2}>EATWELL</Title>
         </Link>
 
         <Flex columnGap={10}>

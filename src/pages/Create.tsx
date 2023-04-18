@@ -8,6 +8,7 @@ import {
   Title,
   Paper,
 } from "@mantine/core";
+import { addRecipe } from "../services/recipe-api";
 import { GrAdd } from "react-icons/gr";
 import { RiDeleteBin7Fill } from "react-icons/ri";
 
@@ -59,6 +60,39 @@ const Create = () => {
       default:
         break;
     }
+  };
+
+  const handleAddRecipe = async () => {
+    const constructInstructions: { type: string; text: string }[] =
+      instructions.map((ins) => {
+        return { type: "HowToStep", text: ins };
+      });
+
+    const newRecipe = {
+      title,
+      ingredients,
+      instructions: constructInstructions,
+      times,
+      image: imageUrl,
+    };
+
+    const response = await addRecipe(newRecipe);
+
+    if (response) {
+      console.log("New recipe added");
+      resetFields();
+    }
+  };
+
+  const resetFields = () => {
+    setTitle("");
+    setIngredients([]);
+    setInstructions([]);
+    setTimes([]);
+    setImageUrl("");
+    setSingleIngr("");
+    setSingleIns("");
+    setSingleTime("");
   };
 
   return (
@@ -208,6 +242,7 @@ const Create = () => {
               ingredients.length === 0 ||
               instructions.length === 0
             }
+            onClick={() => handleAddRecipe()}
           >
             Add Recipe
           </Button>

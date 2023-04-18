@@ -34,8 +34,21 @@ export const searchRecipes = async (
   search: string
 ): Promise<IRecipe[] | null> => {
   try {
-    const recipe: IRecipe[] = (await instance.get(`/recipes/search?search=${search}`))
-      .data;
+    const recipe: IRecipe[] = (
+      await instance.get(`/recipes/search?search=${search}`)
+    ).data;
+    return recipe;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const addRecipe = async (
+  newRecipe: IRecipe
+): Promise<IRecipe | null> => {
+  try {
+    const recipe: IRecipe = (await instance.post("/recipes", newRecipe)).data;
     return recipe;
   } catch (error) {
     console.log(error);

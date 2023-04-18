@@ -33,7 +33,7 @@ const Search = () => {
         Search results for `{searchParams.get("search")}`
       </Title>
 
-      <Flex wrap="wrap" justify="center" gap={10} mb={10}>
+      <Flex wrap="wrap" justify="center" gap={10}>
         {recipes?.map((recipe: IRecipe) => (
           <RecipeCard key={recipe.id} recipe={recipe} />
         ))}

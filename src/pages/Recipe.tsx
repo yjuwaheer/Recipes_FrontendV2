@@ -1,11 +1,22 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Container, Image, Flex, Title, List, Box, Paper } from "@mantine/core";
+import { useParams, useNavigate } from "react-router-dom";
+import {
+  Container,
+  Image,
+  Flex,
+  Title,
+  List,
+  Box,
+  Paper,
+  Button,
+} from "@mantine/core";
 import { IRecipe } from "../shared/recipe-types";
-import { getRecipe } from "../services/recipe-api";
+import { deleteRecipe, getRecipe } from "../services/recipe-api";
 import { BiRightArrowAlt } from "react-icons/bi";
+import { RiDeleteBin7Fill } from "react-icons/ri";
 
 const Recipe = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [image, setImage] = useState<string | undefined>("");
   const [recipe, setRecipe] = useState<IRecipe | null>(null);
@@ -19,6 +30,15 @@ const Recipe = () => {
       const data = await getRecipe(id);
       setRecipe(data);
       setImage(data?.image);
+    }
+  };
+
+  const handleDelete = async () => {
+    if (recipe?.id) {
+      const response = await deleteRecipe(recipe.id);
+      console.log(response);
+
+      navigate("/");
     }
   };
 
@@ -62,6 +82,17 @@ const Recipe = () => {
               </Paper>
             ))}
           </Box>
+
+          <Flex justify="end" mb={10}>
+            <Button
+              color="red.5"
+              onDoubleClick={() => {
+                handleDelete();
+              }}
+            >
+              <RiDeleteBin7Fill />
+            </Button>
+          </Flex>
         </Flex>
       )}
     </Container>

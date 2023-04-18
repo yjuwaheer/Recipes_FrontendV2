@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosHeaders } from "axios";
 import { IRecipe } from "../shared/recipe-types";
 
 export const instance = axios.create({
@@ -50,6 +50,18 @@ export const addRecipe = async (
   try {
     const recipe: IRecipe = (await instance.post("/recipes", newRecipe)).data;
     return recipe;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const deleteRecipe = async (
+  id: number
+): Promise<{ affected: number } | null> => {
+  try {
+    const response = (await instance.delete("/recipes", { data: { id } })).data;
+    return response;
   } catch (error) {
     console.log(error);
     return null;

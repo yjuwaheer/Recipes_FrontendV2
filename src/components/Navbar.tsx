@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Title, Flex, Button } from "@mantine/core";
 
@@ -7,7 +6,9 @@ const Navbar = () => {
     <Container py={12}>
       <Flex justify="space-between" align="center">
         <Link to="/">
-          <Title order={2}>EATWELL</Title>
+          <Title order={2}>
+            EAT<span style={{ color: "#26cc00" }}>WELL</span>
+          </Title>
         </Link>
 
         <Flex columnGap={10}>

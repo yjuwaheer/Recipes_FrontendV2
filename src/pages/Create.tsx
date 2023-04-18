@@ -201,16 +201,17 @@ const Create = () => {
           />
         </Card>
 
-        <Button
-          maw={200}
-          disabled={
-            title === "" ||
-            ingredients.length === 0 ||
-            instructions.length === 0
-          }
-        >
-          Add Recipe
-        </Button>
+        <Flex justify="center">
+          <Button
+            disabled={
+              title === "" ||
+              ingredients.length === 0 ||
+              instructions.length === 0
+            }
+          >
+            Add Recipe
+          </Button>
+        </Flex>
       </Flex>
     </Container>
   );

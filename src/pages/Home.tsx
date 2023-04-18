@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import { getRecipes } from "../services/recipe-api";
 import { IRecipe } from "../shared/recipe-types";
-import Search from "../components/Search";
+import SearchBox from "../components/SearchBox";
 import RecipeCard from "../components/RecipeCard";
 
 const Home = () => {
@@ -58,7 +58,7 @@ const Home = () => {
 
   return (
     <Container>
-      <Search />
+      <SearchBox />
 
       <Flex mb={10} ref={targetRef}>
         <Select

@@ -29,3 +29,16 @@ export const getRecipe = async (id: string): Promise<IRecipe | null> => {
     return null;
   }
 };
+
+export const searchRecipes = async (
+  search: string
+): Promise<IRecipe[] | null> => {
+  try {
+    const recipe: IRecipe[] = (await instance.get(`/recipes/search?search=${search}`))
+      .data;
+    return recipe;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};

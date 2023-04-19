@@ -10,16 +10,20 @@ import {
   Paper,
   Button,
 } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 import { IRecipe } from "../shared/recipe-types";
 import { deleteRecipe, getRecipe } from "../services/recipe-api";
 import { BiRightArrowAlt } from "react-icons/bi";
 import { RiDeleteBin7Fill } from "react-icons/ri";
+import { BsPencilFill } from "react-icons/bs";
+import EditModal from "../components/EditModal";
 
 const Recipe = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [image, setImage] = useState<string | undefined>("");
   const [recipe, setRecipe] = useState<IRecipe | null>(null);
+  const [opened, { open, close }] = useDisclosure(false);
 
   useEffect(() => {
     fetchRecipe();
@@ -83,7 +87,10 @@ const Recipe = () => {
             ))}
           </Box>
 
-          <Flex justify="end" mb={10}>
+          <Flex justify="end" mb={10} gap={10}>
+            <Button color="gray" onClick={open}>
+              <BsPencilFill />
+            </Button>
             <Button
               color="red.5"
               onDoubleClick={() => {
@@ -93,6 +100,9 @@ const Recipe = () => {
               <RiDeleteBin7Fill />
             </Button>
           </Flex>
+
+          {/* Edit Modal */}
+          <EditModal opened={opened} close={close} recipe={recipe} fetchRecipe={fetchRecipe} />
         </Flex>
       )}
     </Container>

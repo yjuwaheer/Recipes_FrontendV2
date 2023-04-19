@@ -79,7 +79,6 @@ const Create = () => {
     const response = await addRecipe(newRecipe);
 
     if (response) {
-      console.log("New recipe added");
       resetFields();
     }
   };

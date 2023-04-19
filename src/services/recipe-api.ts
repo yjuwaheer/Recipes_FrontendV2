@@ -56,6 +56,21 @@ export const addRecipe = async (
   }
 };
 
+export const updateRecipe = async (
+  id: number,
+  newRecipe: IRecipe
+): Promise<IRecipe | null> => {
+  try {
+    const recipe: IRecipe = (
+      await instance.put("/recipes", { id, ...newRecipe })
+    ).data;
+    return recipe;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
 export const deleteRecipe = async (
   id: number
 ): Promise<{ affected: number } | null> => {

@@ -14,7 +14,7 @@ const RecipeCard = ({ recipe }: { recipe: IRecipe }) => {
       miw={{ 300: "100%", sm: 300 }}
     >
       <Card.Section>
-        <Image src={recipe.image} height={160} maw={{ 300: "100%", sm: 300 }} alt="Broken image" />
+        <Image src={recipe.image} height={160} maw={{ 300: "100%", sm: 300 }} alt="Broken image :-(" />
       </Card.Section>
 
       <Group position="apart" mt="md" mb="xs">

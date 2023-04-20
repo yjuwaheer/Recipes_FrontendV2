@@ -82,3 +82,13 @@ export const deleteRecipe = async (
     return null;
   }
 };
+
+export const getRandomRecipe = async () =>{
+  try {
+    const response = (await instance.get("/recipes/random")).data;
+    return response;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}

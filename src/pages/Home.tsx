@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Container, Flex, Select, Grid, Button } from "@mantine/core";
+import { Container, Flex, Select, Skeleton, Button, Text } from "@mantine/core";
 import { useScrollIntoView } from "@mantine/hooks";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import {
   useSearchParams,
   useNavigate,
   createSearchParams,
+  Link,
 } from "react-router-dom";
 import { getRecipes } from "../services/recipe-api";
 import { IRecipe } from "../shared/recipe-types";
@@ -60,6 +61,12 @@ const Home = () => {
     <Container>
       <SearchBox />
 
+      <Link to="/random">
+        <Text underline align="center" color="green">
+          Get a random recipe
+        </Text>
+      </Link>
+
       <Flex mb={10} ref={targetRef}>
         <Select
           label="Sort number of ingredients from"
@@ -94,6 +101,16 @@ const Home = () => {
         {recipes?.map((recipe: IRecipe) => (
           <RecipeCard key={recipe.id} recipe={recipe} />
         ))}
+
+        {!recipes &&
+          [...Array(9)].map((x, i) => (
+            <Skeleton
+              height={300}
+              radius="md"
+              maw={{ 300: "100%", sm: 300 }}
+              key={`key-${i}`}
+            />
+          ))}
       </Flex>
 
       <Flex mb={30} justify="center" gap={25}>

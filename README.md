@@ -29,7 +29,6 @@ Frontend for Recipes app - [View Live Demo](https://nlrecipesv2.netlify.app/)
 - ReactJS
 - React Router
 - axios
-- TailwindCSS
 - Mantine
 
 ### Things to improve

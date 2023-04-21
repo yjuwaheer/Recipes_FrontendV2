@@ -133,6 +133,7 @@ const EditModal = ({
             onChange={(e) => setSingleIngr(e.target.value)}
           />
           <Button
+            p={0}
             w="10%"
             color="green.3"
             disabled={singleIngr === ""}
@@ -153,6 +154,7 @@ const EditModal = ({
                 </Paper>
                 <Button
                   color="red.6"
+                  p={0}
                   w="10%"
                   onClick={() => {
                     handleRemove("ing", ing);
@@ -174,6 +176,7 @@ const EditModal = ({
             onChange={(e) => setSingleIns(e.target.value)}
           />
           <Button
+            p={0}
             w="10%"
             color="green.3"
             disabled={singleIns === ""}
@@ -194,6 +197,7 @@ const EditModal = ({
                 </Paper>
                 <Button
                   color="red.6"
+                  p={0}
                   w="10%"
                   onClick={() => {
                     handleRemove("ins", ins);
@@ -215,6 +219,7 @@ const EditModal = ({
             onChange={(e) => setSingleTime(e.target.value)}
           />
           <Button
+            p={0}
             w="10%"
             color="green.3"
             disabled={singleTime === ""}
@@ -235,6 +240,7 @@ const EditModal = ({
                 </Paper>
                 <Button
                   color="red.6"
+                  p={0}
                   w="10%"
                   onClick={() => {
                     handleRemove("time", time);

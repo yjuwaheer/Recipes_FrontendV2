@@ -116,6 +116,7 @@ const Create = () => {
               onChange={(e) => setSingleIngr(e.target.value)}
             />
             <Button
+              p={0}
               w="10%"
               color="green.3"
               disabled={singleIngr === ""}
@@ -135,6 +136,7 @@ const Create = () => {
                   </Paper>
                   <Button
                     color="red.6"
+                    p={0}
                     w="10%"
                     onClick={() => {
                       handleRemove("ing", ing);
@@ -156,6 +158,7 @@ const Create = () => {
               onChange={(e) => setSingleIns(e.target.value)}
             />
             <Button
+              p={0}
               w="10%"
               color="green.3"
               disabled={singleIns === ""}
@@ -175,6 +178,7 @@ const Create = () => {
                   </Paper>
                   <Button
                     color="red.6"
+                    p={0}
                     w="10%"
                     onClick={() => {
                       handleRemove("ins", ins);
@@ -196,6 +200,7 @@ const Create = () => {
               onChange={(e) => setSingleTime(e.target.value)}
             />
             <Button
+              p={0}
               w="10%"
               color="green.3"
               disabled={singleTime === ""}
@@ -215,6 +220,7 @@ const Create = () => {
                   </Paper>
                   <Button
                     color="red.6"
+                    p={0}
                     w="10%"
                     onClick={() => {
                       handleRemove("time", time);

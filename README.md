@@ -1,6 +1,6 @@
 # About
 
-Frontend for Recipes app - [View Live Demo](https://nlrecipesv2.netlify.app/) (Hosted on Netlify)
+Frontend for Recipes app - [View Live Demo](https://nlrecipesv2.netlify.app/) (Hosted on Netlify) \
 Having issues? Try the vercel deployment: [Demo](https://recipes-frontend-v2.vercel.app/)
 
 `Note`: Open demo in a new tab if it doesn't load on first try. The backend server goes to sleep after some time.
